@@ -21,7 +21,7 @@ def signin():
             password = fake.password()
 
             # Register demo user
-            demo_user = User(email=email, password=generate_password_hash(password, method="sha256"))
+            demo_user = User(email=email, password=generate_password_hash(password, method="pbkdf2:sha256"))
             db.session.add(demo_user)
             db.session.commit()
 
@@ -111,7 +111,7 @@ def signup():
 
         # Add user to database
         else:
-            new_user = User(email=email, password=generate_password_hash(password, method="sha256"))
+            new_user = User(email=email, password=generate_password_hash(password, method="pbkdf2:sha256"))
             db.session.add(new_user)
             db.session.commit()
 
