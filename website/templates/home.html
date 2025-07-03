@@ -25,35 +25,59 @@
 {% else %}
 
 <div class="container">
-
-        <!-- Workouts -->
-        {% for workout in user.workouts %}
-            <div class="workout-wrapper">
-                <form action="/workout" method="POST">
-                    {% if workout.description %}
-                        <button type="submit" class="btn btn-primary btn-workout" name="workout" value="{{ workout.id }}">
-                            <h2>{{ workout.name }}</h2>
-                            <p class="workout-lead">{{ workout.description }}</p>
-                        </button>
-                    {% else %}
-                        <button type="submit" class="btn btn-primary btn-workout no-description" name="workout" value="{{ workout.id }}">
-                            <h2>{{ workout.name }}</h2>
-                        </button>
-                    {% endif %}
-                </form>
-                <form action="/edit-workout" method="POST">
-                    <button title="Edit Workout" type="submit" class="btn-edit" name="workout" value="{{ workout.id }}">
-                        <i class="fa-solid fa-pen"></i>
+    <!-- Workouts -->
+    {% for workout in user.workouts %}
+        <div class="workout-wrapper">
+            <form action="/workout" method="POST">
+                {% if workout.description %}
+                    <button type="submit" class="btn btn-primary btn-workout" name="workout" value="{{ workout.id }}">
+                        <h2>{{ workout.name }}</h2>
+                        <p class="workout-lead">{{ workout.description }}</p>
                     </button>
-                </form>
-            </div>
-        {% endfor %}
-
-        <!-- Buttons -->
-        <div class="buttons">
-            <a class="btn btn-secondary" href="/new-workout" role="button">Add workout</a>
+                {% else %}
+                    <button type="submit" class="btn btn-primary btn-workout no-description" name="workout" value="{{ workout.id }}">
+                        <h2>{{ workout.name }}</h2>
+                    </button>
+                {% endif %}
+            </form>
+            <form action="/edit-workout" method="POST">
+                <button title="Edit Workout" type="submit" class="btn-edit" name="workout" value="{{ workout.id }}">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+            </form>
         </div>
-    
+    {% endfor %}
+
+    <!-- Buttons -->
+    <div class="buttons">
+        <a class="btn btn-secondary" href="/new-workout" role="button">Add workout</a>
+    </div>
+
+    <!-- Analytics Section -->
+    <div class="analytics-section">
+        <!-- Analytics Filters -->
+        <div id="analytics-filters" class="analytics-filters">
+            <label for="exercise-select">Exercise:</label>
+            <select id="exercise-select">
+                <option value="all">All</option>
+                <!-- Options will be populated by JS -->
+            </select>
+            <label for="date-from">From:</label>
+            <input type="date" id="date-from" name="date-from">
+            <label for="date-to">To:</label>
+            <input type="date" id="date-to" name="date-to">
+        </div>
+        <!-- Analytics Chart Areas -->
+        <div id="progress-chart-wrapper" class="analytics-chart-block">
+            <canvas id="progressChart"></canvas>
+        </div>
+        <div id="sessions-chart-wrapper" class="analytics-chart-block">
+            <canvas id="sessionsChart"></canvas>
+        </div>
+        <div id="workout-stats-wrapper" class="analytics-chart-block">
+            <canvas id="workoutStats"></canvas>
+        </div>
+    </div>
 </div>
 
 {% endif %}
