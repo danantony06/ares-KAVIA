@@ -27,6 +27,10 @@ While there are many excellent workout trackers available, I always found myself
 
 Ares is a minimalist workout tracker built with Flask, Python, SQLAlchemy, JavaScript, and pure CSS. It allows users to create workouts with multiple exercises and store weights and details for each one. With Ares, you can quickly switch between workouts and easily make edits. It was designed to be a practical solution for those who want to track their progress while maintaining efficiency.
 
+### Analytics & Progress Dashboard
+
+Ares now provides every user with an advanced Analytics Dashboard. This dashboard lets you visualize your exercise progress over time, track key stats, and discover trends in your workout habits. Use filter controls to select any date range or focus on specific exercises. Charts and stats update instantly to give you actionable insights and keep you motivated.
+
 ### Built With
 
 -   [Flask](https://flask.palletsprojects.com/)
