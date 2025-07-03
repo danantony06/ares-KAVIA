@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Analytics Dashboard{% endblock %}
+{% block content %}
+
+<div class="analytics-dashboard">
+    <h1 class="dashboard-title">Analytics Dashboard</h1>
+    <div class="filter-panel">
+        <form id="analytics-filters" class="filters-form">
+            <label>
+                Date Range:
+                <input type="date" id="dateFrom" name="date_from">
+                <span>to</span>
+                <input type="date" id="dateTo" name="date_to">
+            </label>
+            <label>
+                Exercise:
+                <select id="exerciseSelect" name="exercise">
+                    <option value="">All</option>
+                    <!-- Exercise options dynamically injected by JS -->
+                </select>
+            </label>
+            <button type="button" id="applyFilters">Apply</button>
+        </form>
+    </div>
+    <div class="analytics-charts">
+        <div class="chart-block">
+            <canvas id="progressChart"></canvas>
+        </div>
+        <div class="stats-block" id="statsBlock">
+            <!-- Stats dynamically injected by JS -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/analytics-extra.css') }}">
+<script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+{% endblock %}

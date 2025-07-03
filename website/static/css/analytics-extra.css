@@ -1,0 +1,75 @@
+.analytics-dashboard {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.dashboard-title {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 2rem;
+    font-family: 'AvertaStd-Bold', Arial, sans-serif;
+}
+
+.filter-panel {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.filters-form label {
+    margin: 0 10px;
+    font-weight: 500;
+}
+.filters-form input[type="date"], .filters-form select {
+    margin-left: 6px;
+    margin-right: 6px;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid #bbb;
+}
+
+#applyFilters {
+    background: #ff6600;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 16px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.analytics-charts {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+@media (min-width: 640px) {
+    .analytics-charts {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    .chart-block, .stats-block {
+        flex: 1 1 0;
+    }
+}
+
+.stats-block {
+    min-width: 250px;
+    background: #fafafa;
+    border: 1px solid #ececec;
+    border-radius: 9px;
+    padding: 18px 16px;
+    box-shadow: 0px 1px 6px rgba(0,0,0,0.045);
+}
+.stat-item {
+    margin-bottom: 12px;
+    font-size: 1.06rem;
+}
+
+.error-msg {
+    color: #d22;
+    padding: 8px 0;
+}
