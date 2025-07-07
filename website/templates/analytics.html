@@ -1,39 +1,43 @@
-{% extends "base.html" %}
-{% block title %}Analytics Dashboard{% endblock %}
+{% extends 'base.html' %}
+{% block title %}Analytics{% endblock %}
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/analytics-extra.css') }}">
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<div class="analytics-dashboard">
-    <h1 class="dashboard-title">Analytics Dashboard</h1>
-    <div class="filter-panel">
-        <form id="analytics-filters" class="filters-form">
-            <label>
-                Date Range:
-                <input type="date" id="dateFrom" name="date_from">
-                <span>to</span>
-                <input type="date" id="dateTo" name="date_to">
-            </label>
-            <label>
-                Exercise:
-                <select id="exerciseSelect" name="exercise">
-                    <option value="">All</option>
-                    <!-- Exercise options dynamically injected by JS -->
-                </select>
-            </label>
-            <button type="button" id="applyFilters">Apply</button>
-        </form>
+<div class="analytics-header">
+    <h1>Analytics Dashboard</h1>
+    <p>Visualize your exercise progress and personal records.</p>
+</div>
+
+<div class="analytics-select">
+    <label for="exercise-select">Select Exercise:</label>
+    <select id="exercise-select">
+        <!-- Dynamically populated exercises -->
+    </select>
+</div>
+
+<div id="progress-charts-container">
+    <div class="analytics-chart-block">
+        <h2>Weights Progress Over Time</h2>
+        <canvas id="weightsProgressChart"></canvas>
     </div>
-    <div class="analytics-charts">
-        <div class="chart-block">
-            <canvas id="progressChart"></canvas>
-        </div>
-        <div class="stats-block" id="statsBlock">
-            <!-- Stats dynamically injected by JS -->
-        </div>
+    <div class="analytics-chart-block">
+        <h2>Reps Progress Over Time</h2>
+        <canvas id="repsProgressChart"></canvas>
     </div>
 </div>
 
-{% endblock %}
-{% block scripts %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/analytics-extra.css') }}">
+<div id="stats-section" class="analytics-stats">
+    <h2>Best Lifts & Trends</h2>
+    <ul id="stats-list">
+        <!-- Will be populated with best lifts, trends, and more -->
+    </ul>
+</div>
+
+<!-- Add analytics detail here -->
+<div id="analytics-content">
+    <!-- Will be dynamically populated by JS -->
+</div>
 <script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
 {% endblock %}
